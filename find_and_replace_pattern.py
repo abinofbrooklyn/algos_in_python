@@ -7,7 +7,7 @@ class Solution:
         return matches
 
     def align(self, word, pattern):
-        if len(word) != len(patter):
+        if len(word) != len(pattern):
             return False
 
         word_to_pattern = [0] * 256
