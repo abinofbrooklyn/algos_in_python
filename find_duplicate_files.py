@@ -8,11 +8,11 @@ class Solution:
             prefix = input[0]
             for i in range(1, len(input)):
                 file = input[i]
-                two = file.split("(")
-                key = two[1][0:len(two)-1]
+                content = file.split("(")
+                key = two[1][0:len(content[1])-1]
                 if key not in dict:
                     dict[key] = []
-                dict[key].append(prefix + "/" + two[0])
+                dict[key].append(prefix + "/" + content[0])
         res = []
         for val in dict.values():
             if len(val) >= 2:
