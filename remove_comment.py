@@ -8,7 +8,7 @@ class Solution:
             i = 0
             while i < len(line):
                 if i < len(line)-1 and line[i] == '/' and line[i+1] =='/' and not is_block:
-                    i = line[i]
+                    i = len(line)
                 elif i < len(line)-1 and line[i] == '/' and line[i+1] =='*' and not is_block:
                     is_block = True
                     i += 1

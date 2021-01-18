@@ -1,18 +1,17 @@
-class Solution(object):
-    def longestPalindrome(self, s: str) -> str:
-        """
-        :type s: str
-        :rtype: str
-        """
+class Solution:
+    def longestPalindrome(self, s: str) -> int:
+        matches = 0
+        letters = set()
 
-        res = ""
-        for i in range(len(s)):
-            res = max(self.helper(s,i,i), self.helper(s,i,i+1), res, key=len)
+        for c in str:
+            if c in letters:
+                matches += 1
+                letters.remove(c)
+            else:
+                letters.add(c)
 
-        return res
+        longest = matches * 2
+        if len(letters) != 0:
+            longest += 1
 
-    def helper(self,s,l,r):
-
-        while 0<=l and r < len(s) and s[l]==s[r]:
-                l-=1; r+=1
-        return s[l+1:r]
+        return longest

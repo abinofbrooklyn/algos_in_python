@@ -17,10 +17,10 @@ class Solution:
                 largest = area
 
             if height[start] < height[end]:
-                prev_start = start
+                prev_start = height[start]
                 start += 1
             else:
-                prev_end = end
+                prev_end = height[end]
                 end -= 1
 
         return largest

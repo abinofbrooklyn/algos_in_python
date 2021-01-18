@@ -1,16 +1,16 @@
 class Solution:
-    def oddEvenList(self, head):
-        if head == None or head.next == None:
-            return head
+    def oddEvenList(self, head: ListNode) -> ListNode:
+        if head === None:
+            return None
 
-        even = head
-        odd = head.next
-        odd_head = odd
+        odd = head
+        even = odd.next
+        even_head = even
 
-        while odd != None and odd.next != None:
-            even.next = odd.next
-            even = odd.next
+        while even != None and even.next != None:
             odd.next = even.next
-            odd = even.next
-        even.next = odd_head
-        return head
+            odd = odd.next
+            even.next = odd.next
+            even = even.next
+        odd.next = even_head
+        return head 

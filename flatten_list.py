@@ -6,14 +6,21 @@ class TreeNode:
 
 class Solution:
     def flatten(self, root: TreeNode) -> None:
-        if root is not None:
-            self.flatten(root.left)
-            self.flatten(root.right)
+        if root is None: return
 
-            if root.left is not None:
-                current = root.left
-                while current.right is not None:
-                    current = current.right
-                current.right = root.right
-                root.right = root.left
-                root.left = None
+        stack = []
+        stack.append(root)
+
+        while len(stack) != 0:
+            current_node = stack.pop()
+
+            if current_node.right != None:
+                stack.append(current_node.right)
+
+            if current_node.left != None:
+                stack.append(current_node.left)
+
+            if len(stack) != 0:
+                current_node.right = stack[-1]
+
+            current_node.left = None

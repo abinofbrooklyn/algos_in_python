@@ -13,7 +13,7 @@ def helper(self, nums, left, right):
 
     return max(left_sum, right_sum, cross_sum)
 
-def cross_sum(nums, left, right, middle):
+def cross_sum(self, nums, left, right, middle):
     if left == right:
         return nums[left]
 

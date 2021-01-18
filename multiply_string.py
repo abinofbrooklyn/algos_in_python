@@ -15,6 +15,16 @@ class Solution:
             power -= 1
         return result
 
+    def multiplyString2(self, num1: str, num2: str) -> str:
+        def str_to_i(s):
+            res = 0
+            for c in s:
+                res = res * 10 + ord(c) - ord('0')
+            return res
+
+        return str(str_to_i(num1) * str_to_i(num2))
+
+
 s = Solution()
 print(s.multiplyString("4342","4543"))
 print(s.multiplyString("4545476863","4545476863"))

@@ -1,16 +1,17 @@
 class Solution:
-    def rotate_matrix(self, matrix):
-        size = len(matrix) - 1
+    def rotate(self, matrix: List[List[int]]) -> None:
+        """
+        Do not return anything, modify matrix in-place instead.
+        """
+        N = len(matrix)
+        for i in range(N):
+            for j in range(i,N):
+                tmp = matrix[i][j]
+                matrix[i][j] = matrix[j][i]
+                matrix[j][i] = tmp
 
-        for row in range(0, len(matrix) // 2):
-            for col in range(row, size - row):
-                top = matrix[row][col]
-                left = matrix[size-col][row]
-                bottom = maxtrix[size-row][size-col]
-                right = matrix[col][size-row]
-
-                matrix[row][col] = left
-                matrix[size-row][row] = bottom
-                matrix[size-row][size-col] = right
-                matrix[col][size-row] = top
-        return matrix
+        for i in range(N):
+            for j in range(N//2):
+                tmp = matrix[i][j]
+                matrix[i][j] = matrix[i][N-1-j]
+                matrix[i][N-1-j] = tmp

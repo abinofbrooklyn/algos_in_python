@@ -9,7 +9,7 @@ class Solution:
         return islands
 
     def island(self, grid, row, colunm):
-        if row < 0 or column < 0 || row == len(grid) || gird[row][column] == '0':
+        if row < 0 or column < 0 or row == len(grid) or  column == len(grid[0]) or grid[row][column] == '0':
             return
         else:
             grid[row][column] = '0'

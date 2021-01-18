@@ -33,6 +33,6 @@ class Solution:
 
         while head:
             nxt = head.next
-            head, prev, head.next = nxt, head, prev
+            head.next, prev, head = prev, head, nxt
 
         return prev

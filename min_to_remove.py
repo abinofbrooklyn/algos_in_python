@@ -18,6 +18,20 @@ class Solution:
         string_in_reverse = removeInvalid(check_str[::-1], ")", "(")
         return string_in_reverse[::-1]
 
+    def minToRemoveToMakeValid2(self, s: str) -> str:
+        stack, res = [], [""] * len(s)
+        for i, c in enumerate(s):
+            if c == "(":
+                stack.append(i)
+            if c == ")":
+                if stack:
+                    left = stack.pop
+                    res[left] = s[left]
+                    res[i] = c
+            else:
+                res[i] = c
+        return ("").join(res)
+
 s = Solution()
 print(s.minToRemoveToMakeValid("lee(t(c)o)de)"))
 print(s.minToRemoveToMakeValid("a)b(c)d"))
