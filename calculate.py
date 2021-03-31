@@ -1,22 +1,24 @@
 class Solution:
     def calculate(self, s: str) -> int:
-        s += "+0"
-        stack, num, operation = [], 0, "+"
-        for c in s:
-            if c.isdigit():
-                num = num * 10 + int(c)
-            elif c == " ":
-                continue
-            else:
-                if operation == "+":
+        stack, num, operator = [], 0, "+"
+        all_ops = {"+", "-", "*", "/"}
+        nums = set(str(x) for x in range(10))
+
+        for idx in range(len(s)):
+            char = s[idx]
+
+            if char in nums:
+                num = num * 10 + int(char)
+
+            if char in all_ops or idx == len(s)-1:
+                if operator == "+":
                     stack.append(num)
-                if operation == "-":
+                elif operator == "-":
                     stack.append(-num)
-                if operation == "*":
-                    val = stack.pop()
-                    stack.append((val * num))
-                if operation == "/":
-                    val = stack.pop()
-                    stack.append(math.turc((val / num)))
-                num, operation = 0, c
+                elif operator == "*":
+                    stack[-1] *= num
+                elif operator == "/":
+                    stack[-1] = int(stack[-1] / num)
+                num, operator = 0, char
+
         return sum(stack)
